@@ -1,9 +1,11 @@
 configure
 edit system
 set hostname example-router
-
-set intefaces lo0 unit 12 family inet address 2.2.2.2/32
+!
+set interfaces lo0 unit 100 family inet address 1.1.1.1/32
+set interfaces lo0 description "Test interface"
+!
 
 commit check
-
+!
 commit and-quit
