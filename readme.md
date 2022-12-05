@@ -1,0 +1,3 @@
+# Netowrk Notes
+
+Making a quick repository of working configs for Cisco and Juniper, planning to keep it updated over time...
