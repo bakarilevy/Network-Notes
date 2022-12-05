@@ -1,0 +1,9 @@
+show version
+show startup-config
+show running-config
+show interface 
+show ip int brief
+show interface <interface>
+!show interface Gi0/1
+show ip int <interface>
+!show ip int Gi0/1

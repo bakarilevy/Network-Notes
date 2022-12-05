@@ -1,0 +1,48 @@
+enable
+
+conf t
+
+line vty 0 4
+login local
+transport input telnet
+
+service password-encryption
+
+hostname router.mydomain.com
+
+ip domain-name mydomain.com
+crypto key generate rsa
+ip ssh timeout 60
+ip ssh authentication-retries 3
+line vty 0 4
+transport input ssh
+
+int loopback0
+ip address 10.0.0.1 255.255.255.255
+shut
+no shut
+
+int s1/0
+description interface-description(DMZ Network)
+ip address <ip-address> <subnet-mask>
+! ip directed-broadcast: used to disable broadcast pings
+no ip directed-broadcast
+! ip mroute-cache: if using multicast routing enable setting
+no ip mroute-cache
+shut
+no shut
+
+int s1/1
+! Circuit ID = ID Used to identify specific T1 circuit
+description ISP Uplink, Circuit ID #3141579
+ip address 10.0.0.2 255.255.255.252
+encapsulation ppp
+shut
+no shut
+
+! Null interface to discard unmatched traffic, necessary for BGP configuration
+ip route 192.168.0.0 255.255.0.0 null0
+
+end
+
+write memory

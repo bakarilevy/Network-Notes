@@ -1,0 +1,9 @@
+configure
+edit system
+set hostname example-router
+
+set intefaces lo0 unit 12 family inet address 2.2.2.2/32
+
+commit check
+
+commit and-quit
